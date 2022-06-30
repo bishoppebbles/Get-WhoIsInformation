@@ -94,12 +94,13 @@ Function Get-WhoIs {
             [pscustomobject]@{
                 PSTypeName   = "WhoIsResult"
                 IP           = $ipaddress
-                HostName     = $resolveDNS.hostname
+                ReverseDNS   = $resolveDNS.Name
+                HostName     = $resolveDNS.NameHost
                 Name         = $r.name
                 Type         = $r.type
                 StartAddress = $r.startAddress
                 EndAddress   = $r.endAddress
-                TTL          = $resolveDNS.ttl
+                TTL          = $resolveDNS.TTL
                 Country      = $r.country
                 Remarks      = $r.remarks | ForEach-Object {"$($_.description)"}
                 Events       = $r.events | ForEach-Object {"$($_.eventDate): $($_.eventAction)"}
