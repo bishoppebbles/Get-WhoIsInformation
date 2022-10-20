@@ -6,19 +6,19 @@
 .PARAMETER IPAddress
     The IP address(es) to query for domain registration and DNS information
 .EXAMPLE
-    .\Get-DomainInformation.ps1 192.168.10.10
+    .\Get-WhoIsInformation.ps1 192.168.10.10
 
     Get the domain information for a single IP
 .EXAMPLE
-    .\Get-DomainInformation.ps1 '192.168.10.10','10.10.20.3','172.16.30.5'
+    .\Get-WhoIsInformation.ps1 '192.168.10.10','10.10.20.3','172.16.30.5'
 
     Get the domain information for a list of IPs
 .EXAMPLE
-    .\Get-DomainInformation.ps1 (Get-Content .\IPs.txt)
+    .\Get-WhoIsInformation.ps1 (Get-Content .\IPs.txt)
 
     Get the domain information for a list of IPs (one per line) in the file IPs.txt
 .EXAMPLE
-    .\Get-DomainInformation.ps1 (Get-Content .\ips.txt) | 
+    .\Get-WhoIsInformation.ps1 (Get-Content .\ips.txt) | 
         Select-Object IP,HostName,Name,Country,Remarks | 
         Format-Table -AutoSize
 
@@ -28,9 +28,9 @@
     
     https://www.powershellgallery.com/packages/PSScriptTools/2.9.0/Content/functions%5CGet-WhoIs.ps1
 
-    Version 1.0.0
+    Version 1.0.1
     Sam Pursglove
-    Last modified: 30 June 2022
+    Last modified: 20 October 2022
 #>
 
 [CmdletBinding()]
