@@ -28,9 +28,9 @@
     
     https://www.powershellgallery.com/packages/PSScriptTools/2.9.0/Content/functions%5CGet-WhoIs.ps1
 
-    Version 1.0.1
+    Version 1.0.2
     Sam Pursglove
-    Last modified: 20 October 2022
+    Last modified: 03 October 2023
 #>
 
 [CmdletBinding()]
@@ -103,7 +103,8 @@ Function Get-WhoIs {
                 TTL          = $resolveDNS.TTL
                 Country      = $r.country
                 Remarks      = $r.remarks | ForEach-Object {"$($_.description)"}
-                Events       = $r.events | ForEach-Object {"$($_.eventDate): $($_.eventAction)"}
+                Registration = $r.events | Where-Object {$_.eventAction -like "registration"} | ForEach-Object {$_.eventDate}
+                LastChanged  = $r.events | Where-Object {$_.eventAction -like "last changed"} | ForEach-Object {$_.eventDate}
                 Entities     = $r.entities | ForEach-Object {"$($_.roles): $($_.handle)"}
                 Links        = $r.links | ForEach-Object {"$($_.rel): $($_.href)"}
                 Notices      = $r.notices | ForEach-Object {"$($_.title): $($_.description)"}
